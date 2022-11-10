@@ -48,6 +48,56 @@ class BinarySearchTree {
     }
     return found ? currNode : undefined;
   }
+
+  DFSPreOrder() {
+    if (!this.root) return null;
+    const data = [];
+    function traverse(node) {
+      data.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  DFSPostOrder() {
+    if (!this.root) return null;
+    const data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value);
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  DFSInOrder() {
+    if (!this.root) return null;
+    const data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  breadthFirstSearch() {
+    if (!this.root) return null;
+    const queue = [this.root];
+    const data = [];
+    let node;
+    while (queue.length) {
+      node = queue.shift();
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+      data.push(node.value);
+    }
+    return data;
+  }
 }
 
 var binarySearchTree = new BinarySearchTree();
@@ -80,3 +130,16 @@ var binarySearchTree = new BinarySearchTree();
 //   .insert(12);
 // var foundNode = binarySearchTree.find(120);
 // console.log(foundNode); // undefined
+
+binarySearchTree
+  .insert(15)
+  .insert(20)
+  .insert(10)
+  .insert(12)
+  .insert(1)
+  .insert(5)
+  .insert(50);
+console.log(binarySearchTree.DFSPreOrder()); // [15, 10, 1, 5, 12, 20, 50]
+console.log(binarySearchTree.DFSInOrder()); // [1, 5, 10, 12, 15, 20, 50])
+console.log(binarySearchTree.DFSPostOrder()) // [5, 1, 12, 10, 50, 20, 15]
+console.log(binarySearchTree.breadthFirstSearch());
