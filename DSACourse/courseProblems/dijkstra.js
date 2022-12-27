@@ -181,7 +181,7 @@ g.addEdge('Q', 'C', 6)
 g.addEdge('G', 'Q', 9)
 
 console.log(g.Dijkstra('A', 'E')); // ["A", "Z", "Q", "H", "E"]
-// console.log(g.Dijkstra('A', 'Q')); // ["A", "Z", "Q"]
-// console.log(g.Dijkstra('A', 'G')); // ["A", "C", "G"]
-// console.log(g.Dijkstra('A', 'D')); // ["A", "Z", "Q", "D"]
+console.log(g.Dijkstra('A', 'Q')); // ["A", "Z", "Q"]
+console.log(g.Dijkstra('A', 'G')); // ["A", "C", "G"]
+console.log(g.Dijkstra('A', 'D')); // ["A", "Z", "Q", "D"]
 // console.log(g.getGraph());
