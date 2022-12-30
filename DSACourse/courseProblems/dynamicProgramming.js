@@ -10,4 +10,20 @@ function coinChange(arr, val) {
   return ways.pop();
 }
 
-console.log(coinChange([1, 5, 10, 25], 14511));
+// console.log(coinChange([1, 5, 10, 25], 14511));
+
+
+//Greedy Algorithm (doesn't work with coins=[2,5] and amount = 6)
+function minCoinChange(coins, amount) {
+  coins.sort((a, b) => (a - b));
+  const outputArray = [];
+  for (let i = coins.length - 1; i >= 0; i--) {
+    if (coins[i] <= amount) {
+      amount = amount - coins[i];
+      outputArray.push(amount[i]);
+      i = coins.length;
+    }
+    if (amount <= 0) break;
+  }
+  return outputArray;
+}
