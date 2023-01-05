@@ -18,7 +18,6 @@ class Trie {
   findWord(word, index = 0) {
     // This function will return the node in the trie
     // which corresponds to the end of the passed in word.
-
     // Be sure to consider what happens if the word is not in this Trie.
 
     var char = word[index];

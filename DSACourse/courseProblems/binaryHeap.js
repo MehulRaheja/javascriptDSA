@@ -5,22 +5,18 @@ class MaxBinaryHeap {
 
   insert(element) {
     this.values.push(element);
-    // console.log(this.values);
     if (this.values.length > 1) this.bubbleUp();
   }
 
   bubbleUp() {
     let idx = this.values.length - 1;
     const element = this.values[idx];
-    // console.log(idx, element);
     while (idx > 0) {
       let parentIdx = Math.floor((idx - 1) / 2);
       let parent = this.values[parentIdx];
       if (element <= parent) break;
       this.values[parentIdx] = element;
-      // console.log(parentIdx, this.values[parentIdx]);
       this.values[idx] = parent;
-      // console.log(idx, this.values[idx]);
       // [this.values[idx], this.values[parentIdx]] = [this.values[parentIdx], this.values[idx]];
       idx = parentIdx;
     }
